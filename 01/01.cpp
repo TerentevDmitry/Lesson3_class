@@ -49,13 +49,26 @@ public:
         return result;
     };
 
-    //bool set_num1(double num1)
+    bool set_num1(double num1)
+    {
+        
+    }
+
+
+
+
 };
 
 void printCalculator(double result)
 {
     std::cout << result << std::endl;
 }
+
+double dataEnter(double num1, double num2)
+{
+    
+}
+
 
 int main()
 {
