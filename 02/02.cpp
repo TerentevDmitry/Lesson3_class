@@ -1,79 +1,109 @@
 ﻿#include <iostream>
+#include <cstring>
 
 //Задача 2. Счётчик
 
-class Counter // класс счетчик с методами
+class Counter //Класс счетчик с методами
 {
 private:
-    int counterResult = 1;
+    int cCounterResult = 0;
 
 public:
     
     int cInitialInitValue = 1;
     
-    Counter(int InitialInitValue)
+    int setCounter(int initialInitValue) //Метод инициализации начального значения данных
     {
-        cInitialInitValue = InitialInitValue;
+        cCounterResult = initialInitValue;
+        return cCounterResult;
+    };
+
+    int getCounter() //Метод просмотра значения элементов данных
+    {
+        return cCounterResult;
+    };
+
+    int counterPlus() //Метод увеличения значения на один
+    {
+        cCounterResult++;
+        return cCounterResult;
     };
     
-    int setCounter(int conditionDefault)
+    int counterMinus() //Метод уменьшения значения на один
     {
-        cInitialInitValue = 1;
+        cCounterResult--;
+        return cCounterResult;
     };
-
-    int getCounter()
-    {
-        return counterResult;
-    };
-
-    int counterPlus()
-    {
-        counterResult++;
-        return counterResult;
-    };
-    
-    int counterMinus()
-    {
-        counterResult--;
-        return counterResult;
-    };
-
-    
-
-
 
 };
 
-//функция печати значений
-void printResult(int result)
-{
-    std::cout << result << std::endl;
-}
-
 int main()
 {
-    setlocale(LC_ALL, "Russian"); // Корректное отображение Кириллицы
+    setlocale(LC_ALL, "Russian"); //Корректное отображение Кириллицы
     system("chcp 1251");
 
+    std::string checkInitialInitValue;
+    int initialInitValue = 0;
+    bool checkTrueInitialInitValue = false;
+    Counter counter;
     
-    std::string checkInitialInitValue = "нет";
-
-    std::cout << std::endl << "Вы хотите указать начальное значение счётчика? Введите да или нет: ";
-    std::cin >> checkInitialInitValue;
+    //Цикл проверки и задания начального значения счётчика
+    do
+    {
+        std::cout << std::endl << "Вы хотите указать начальное значение счётчика? Введите да или нет: ";
+        std::cin >> checkInitialInitValue;
+        std::cout << std::endl;
+           
+        if (checkInitialInitValue == "да" || checkInitialInitValue == "Да")
+        {
+            std::cout << "Введите начальное значение счётчика: ";
+            std::cin >> initialInitValue;
+            
+            counter.setCounter(initialInitValue);
+            checkTrueInitialInitValue = true;
+        }
+        else if (checkInitialInitValue == "нет" || checkInitialInitValue == "Нет")
+        {
+            counter.setCounter(1);
+            checkTrueInitialInitValue = true;
+        }
+        else
+        {
+            std::cout << "Вы ввели неверное значение.";
+        }
+    } while (!checkTrueInitialInitValue);
+    
     std::cout << std::endl;
 
-    if (checkInitialInitValue == "да" || checkInitialInitValue == "Да")
-    {
-        int InitialInitValue = 0;
-        std::cout << "Введите начальное значение счётчика: ";
-        std::cin >> InitialInitValue;
-
-        Counter counter(InitialInitValue);
-    }
-    else if (checkInitialInitValue == "нет" || checkInitialInitValue == "Нет")
-    {
-        Counter counter();
-    };
+    std::string commandValue;
+    bool checkCommand = false;
     
-    
+    //Цикл работы счётчика
+    do
+    {
+        std::cout << "Введите команду ('+', '-', '=' или 'x'): ";
+        std::cin >> commandValue;
+        
+        if (commandValue == "x")
+        {
+            std::cout << "Пока.";
+            checkCommand = true;
+        }
+        else if (commandValue == "+")
+        {
+            counter.counterPlus();
+        }
+        else if (commandValue == "-")
+        {
+            counter.counterMinus();
+        }
+        else if (commandValue == "=")
+        {
+            std::cout << "Значение счетчика: " << counter.getCounter() << "." << std::endl;
+        }
+        else
+        {
+            std::cout << "Вы ввели неверное значение." << std::endl;
+        }
+    } while (!checkCommand);
 }
