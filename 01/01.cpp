@@ -4,58 +4,60 @@
 
 class Calculator // класс калькулятор с методами
 {
+private:
+    double cResult = 0;
+
 public:
-    double num1 = 0;
-    double num2 = 0;
-    double result = 0;
+    double cNum1 = 0;
+    double cNum2 = 0;
 
     double add()
     {
-        this->result = num1 + num2;
+        cResult = cNum1 + cNum2;
 
-        return result;
+        return cResult;
     };
     
     double multiply()
     {
-        this->result = num1 * num2;
+        cResult = cNum1 * cNum2;
 
-        return result;
+        return cResult;
     };
     
     double subtract_1_2()
     {
-        this->result = num1 - num2;
+        cResult = cNum1 - cNum2;
 
-        return result;
+        return cResult;
     };
 
     double subtract_2_1()
     {
-        this->result = num2 - num1;
+        cResult = cNum2 - cNum1;
 
-        return result;
+        return cResult;
     };
 
     double divide_1_2()
     {
-        this->result = num1 / num2;
+        cResult = cNum1 / cNum2;
 
-        return result;
+        return cResult;
     };
 
     double divide_2_1()
     {
-        this->result = num2 / num1;
+        cResult = cNum2 / cNum1;
 
-        return result;
+        return cResult;
     };
 
     bool set_num1(double num1)
     {
         if (num1 != 0)
         {
-            this->num1 = num1;
+            cNum1 = num1;
             return true;
         }
         else
@@ -68,7 +70,7 @@ public:
     {
         if (num2 != 0)
         {
-            this->num2 = num2;
+            cNum2 = num2;
             return true;
         }
         else
@@ -79,7 +81,7 @@ public:
 };
 
 //функция печати значений
-void printCalculator(double result)
+void printResult(double result)
 {
     std::cout << result << std::endl;
 }
@@ -96,68 +98,53 @@ int main()
     {
         std::cout << std::endl; //Для красоты
 
-        Calculator check; //Создаем объект для проверки корректности ввода
+        Calculator result; //Создаем объект
         
         do //Проверка num1 равенства нулю
         {
             std::cout << "Введите num1: ";
             std::cin >> num1;
-            if (!check.set_num1(num1))
+            if (!result.set_num1(num1))
             {
                 std::cout << "Неверный ввод! " << std::endl;
             };
-        } while (!check.set_num1(num1));
+        } while (!result.set_num1(num1));
 
         do //Проверка num2 равенства нулю
         {
             std::cout << "Введите num2: ";
             std::cin >> num2;
-            if (!check.set_num2(num2))
+            if (!result.set_num2(num2))
             {
                 std::cout << "Неверный ввод! " << std::endl;
             };
-        } while (!check.set_num2(num2));
+        } while (!result.set_num2(num2));
         
-        Calculator sum;
-        sum.num1 = num1;
-        sum.num2 = num2;
-        sum.add();
-        std::cout << std::endl << "num1 + num2 = ";
-        printCalculator(sum.add());
+        result.cNum1 = num1; //Присваиваем значение введенных переменных в поле класса 
+        result.cNum2 = num2;
+
+        result.add(); //Используем метод из класса Calculator
+        std::cout << std::endl << "num1 + num2 = "; //Печатаем результат в консоль
+        printResult(result.add()); //Печатаем результат в консоль
     
-        Calculator multiply;
-        multiply.num1 = num1;
-        multiply.num2 = num2;
-        multiply.multiply();
+        result.multiply(); 
         std::cout << "num1 * num2 = ";
-        printCalculator(multiply.multiply());
+        printResult(result.multiply());
 
-        Calculator subtract_1_2;
-        subtract_1_2.num1 = num1;
-        subtract_1_2.num2 = num2;
-        subtract_1_2.subtract_1_2();
+        result.subtract_1_2(); 
         std::cout << "num1 - num2 = ";
-        printCalculator(subtract_1_2.subtract_1_2());
+        printResult(result.subtract_1_2());
 
-        Calculator subtract_2_1;
-        subtract_2_1.num1 = num1;
-        subtract_2_1.num2 = num2;
-        subtract_2_1.subtract_2_1();
+        result.subtract_2_1(); 
         std::cout << "num2 - num1 = ";
-        printCalculator(subtract_2_1.subtract_2_1());
+        printResult(result.subtract_2_1());
 
-        Calculator divide_1_2;
-        divide_1_2.num1 = num1;
-        divide_1_2.num2 = num2;
-        divide_1_2.divide_1_2();
+        result.divide_1_2(); 
         std::cout << "num1 / num2 = ";
-        printCalculator(divide_1_2.divide_1_2());
+        printResult(result.divide_1_2());
 
-        Calculator divide_2_1;
-        divide_2_1.num1 = num1;
-        divide_2_1.num2 = num2;
-        divide_2_1.divide_2_1();
+        result.divide_2_1(); 
         std::cout << "num2 / num1 = ";
-        printCalculator(divide_2_1.divide_2_1());
+        printResult(result.divide_2_1());
     }
 }
