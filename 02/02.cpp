@@ -6,7 +6,7 @@
 class Counter //Класс Counter счетчик с методами
 {
 private:
-    int cCounterResult = 0;
+    int cCounterResult = 1;
 
 public:
     Counter(int initialInitValue) //Конструктор
