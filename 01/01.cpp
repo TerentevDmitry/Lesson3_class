@@ -5,52 +5,38 @@
 class Calculator // класс калькулятор с методами
 {
 private:
-    double cResult = 0;
+    double cNum1 = 1;
+    double cNum2 = 1;
 
 public:
-    double cNum1 = 0;
-    double cNum2 = 0;
-
     double add()
     {
-        cResult = cNum1 + cNum2;
-
-        return cResult;
+        return cNum1 + cNum2;
     };
     
     double multiply()
     {
-        cResult = cNum1 * cNum2;
-
-        return cResult;
+        return cNum1 * cNum2;
     };
     
     double subtract_1_2()
     {
-        cResult = cNum1 - cNum2;
-
-        return cResult;
+        return cNum1 - cNum2;
     };
 
     double subtract_2_1()
     {
-        cResult = cNum2 - cNum1;
-
-        return cResult;
+        return cNum2 - cNum1;
     };
 
     double divide_1_2()
     {
-        cResult = cNum1 / cNum2;
-
-        return cResult;
+        return cNum1 / cNum2;
     };
 
     double divide_2_1()
     {
-        cResult = cNum2 / cNum1;
-
-        return cResult;
+        return cNum2 / cNum1;
     };
 
     bool set_num1(double num1)
@@ -80,7 +66,7 @@ public:
     }
 };
 
-//функция печати значений
+//Функция печати значений
 void printResult(double result)
 {
     std::cout << result << std::endl;
@@ -96,7 +82,7 @@ int main()
     
     Calculator result; //Создаем объект
 
-    while (true) // Программа работает бесконечно, пока пользователь не закроет консоль
+    while (true) //Программа работает бесконечно, пока пользователь не закроет консоль
     {
         std::cout << std::endl; //Для красоты
 
@@ -120,9 +106,6 @@ int main()
             };
         } while (!result.set_num2(num2));
         
-        result.cNum1 = num1; //Присваиваем значение введенных переменных в поле класса 
-        result.cNum2 = num2;
-
         result.add(); //Используем метод из класса Calculator
         std::cout << std::endl << "num1 + num2 = "; //Печатаем в консоль
         printResult(result.add()); //Печатаем результат в консоль
