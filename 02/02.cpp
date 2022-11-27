@@ -3,21 +3,17 @@
 
 //Задача 2. Счётчик
 
-class Counter //Класс счетчик с методами
+class Counter //Класс Counter счетчик с методами
 {
 private:
-    int cCounterResult = 0;
+    int cCounterResult = 1;
 
 public:
-    
-    int cInitialInitValue = 1;
-    
-    int setCounter(int initialInitValue) //Метод инициализации начального значения данных
+    Counter(int initialInitValue) //Конструктор
     {
-        cCounterResult = initialInitValue;
-        return cCounterResult;
+        this->cCounterResult = initialInitValue;
     };
-
+    
     int getCounter() //Метод просмотра значения элементов данных
     {
         return cCounterResult;
@@ -25,16 +21,13 @@ public:
 
     int counterPlus() //Метод увеличения значения на один
     {
-        cCounterResult++;
-        return cCounterResult;
+        return ++cCounterResult;
     };
     
     int counterMinus() //Метод уменьшения значения на один
     {
-        cCounterResult--;
-        return cCounterResult;
+        return --cCounterResult;
     };
-
 };
 
 int main()
@@ -45,7 +38,6 @@ int main()
     std::string checkInitialInitValue;
     int initialInitValue = 0;
     bool checkTrueInitialInitValue = false;
-    Counter counter;
     
     //Цикл проверки и задания начального значения счётчика
     do
@@ -58,21 +50,20 @@ int main()
         {
             std::cout << "Введите начальное значение счётчика: ";
             std::cin >> initialInitValue;
-            
-            counter.setCounter(initialInitValue);
             checkTrueInitialInitValue = true;
         }
         else if (checkInitialInitValue == "нет" || checkInitialInitValue == "Нет")
         {
-            counter.setCounter(1);
             checkTrueInitialInitValue = true;
         }
         else
         {
-            std::cout << "Вы ввели неверное значение.";
+            std::cout << "Вы ввели неверную команду.";
         }
     } while (!checkTrueInitialInitValue);
-    
+
+    Counter Counter(initialInitValue);
+        
     std::cout << std::endl;
 
     std::string commandValue;
@@ -91,19 +82,19 @@ int main()
         }
         else if (commandValue == "+")
         {
-            counter.counterPlus();
+            Counter.counterPlus();
         }
         else if (commandValue == "-")
         {
-            counter.counterMinus();
+            Counter.counterMinus();
         }
         else if (commandValue == "=")
         {
-            std::cout << "Значение счетчика: " << counter.getCounter() << "." << std::endl;
+            std::cout << "Значение счетчика: " << Counter.getCounter() << "." << std::endl;
         }
         else
         {
-            std::cout << "Вы ввели неверное значение." << std::endl;
+            std::cout << "Вы ввели неверную команду." << std::endl;
         }
     } while (!checkCommand);
 }
