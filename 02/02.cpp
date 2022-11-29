@@ -1,34 +1,8 @@
 ﻿#include <iostream>
 #include <cstring>
+#include "Counter.h"
 
-//Задача 2. Счётчик
-
-class Counter //Класс Counter счетчик с методами
-{
-private:
-    int CounterResult_ = 0;
-
-public:
-    Counter(int initialInitValue) //Конструктор
-    {
-        this->CounterResult_ = initialInitValue;
-    };
-    
-    int getCounter() //Метод просмотра значения элементов данных
-    {
-        return CounterResult_;
-    };
-
-    int counterPlus() //Метод увеличения значения на один
-    {
-        return ++CounterResult_;
-    };
-    
-    int counterMinus() //Метод уменьшения значения на один
-    {
-        return --CounterResult_;
-    };
-};
+//Задача 2. Класс
 
 int main()
 {
