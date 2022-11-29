@@ -5,45 +5,45 @@
 class Calculator // класс калькулятор с методами
 {
 private:
-    double cNum1 = 1;
-    double cNum2 = 1;
+    double Num1_ = 1;
+    double Num2_ = 1;
 
 public:
     double add()
     {
-        return cNum1 + cNum2;
+        return Num1_ + Num2_;
     };
     
     double multiply()
     {
-        return cNum1 * cNum2;
+        return Num1_ * Num2_;
     };
     
     double subtract_1_2()
     {
-        return cNum1 - cNum2;
+        return Num1_ - Num2_;
     };
 
     double subtract_2_1()
     {
-        return cNum2 - cNum1;
+        return Num2_ - Num1_;
     };
 
     double divide_1_2()
     {
-        return cNum1 / cNum2;
+        return Num1_ / Num2_;
     };
 
     double divide_2_1()
     {
-        return cNum2 / cNum1;
+        return Num2_ / Num1_;
     };
 
     bool set_num1(double num1)
     {
         if (num1 != 0)
         {
-            cNum1 = num1;
+            Num1_ = num1;
             return true;
         }
         else
@@ -56,7 +56,7 @@ public:
     {
         if (num2 != 0)
         {
-            cNum2 = num2;
+            Num2_ = num2;
             return true;
         }
         else

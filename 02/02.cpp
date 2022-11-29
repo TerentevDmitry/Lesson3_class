@@ -6,27 +6,27 @@
 class Counter //Класс Counter счетчик с методами
 {
 private:
-    int cCounterResult = 0;
+    int CounterResult_ = 0;
 
 public:
     Counter(int initialInitValue) //Конструктор
     {
-        this->cCounterResult = initialInitValue;
+        this->CounterResult_ = initialInitValue;
     };
     
     int getCounter() //Метод просмотра значения элементов данных
     {
-        return cCounterResult;
+        return CounterResult_;
     };
 
     int counterPlus() //Метод увеличения значения на один
     {
-        return ++cCounterResult;
+        return ++CounterResult_;
     };
     
     int counterMinus() //Метод уменьшения значения на один
     {
-        return --cCounterResult;
+        return --CounterResult_;
     };
 };
 
